@@ -11,7 +11,7 @@ from charms.grafana_agent.v0.cos_agent import COSAgentProvider
 from charms.rolling_ops.v0.rollingops import RollingOpsManager
 from cluster import ZooKeeperCluster
 from config import ZooKeeperConfig
-from literals import CHARM_KEY, CHARM_USERS, JMX_PORT, METRICS_PROVIDER_PORT, NODE_EXPORTER_PORT
+from literals import CHARM_KEY, CHARM_USERS, JMX_PORT, METRICS_PROVIDER_PORT
 from ops.charm import (
     ActionEvent,
     CharmBase,
@@ -46,7 +46,6 @@ class ZooKeeperCharm(CharmBase):
         self._grafana_agent = COSAgentProvider(
             self,
             metrics_endpoints=[
-                {"path": "/metrics", "port": NODE_EXPORTER_PORT},
                 {"path": "/metrics", "port": JMX_PORT},
                 {"path": "/metrics", "port": METRICS_PROVIDER_PORT},
             ],
